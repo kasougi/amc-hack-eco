@@ -7,8 +7,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
+    Const.updateStatusBarDark();
+
     return MaterialApp(
       title: 'amc_hack',
       theme: ThemeData(

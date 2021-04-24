@@ -20,6 +20,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     return PersistentTabView(
         context,
         controller: _controller,
+        navBarHeight: 80,
         decoration: NavBarDecoration(
           borderRadius: BorderRadius.circular(22.0),
 
