@@ -1,4 +1,5 @@
 import 'package:amc_hack/Const.dart';
+import 'package:amc_hack/Pages/MainPage/HistoryScreen.dart';
 import 'package:amc_hack/Pages/MainPage/HomeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         screens: [
           HomeScreen(),
           null,
-          Container(child: Center(child: Text("ffffff"),),),
+          HistoryScreen(),
         ],
         items: [
           PersistentBottomNavBarItem(
