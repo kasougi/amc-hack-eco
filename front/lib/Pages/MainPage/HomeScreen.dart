@@ -14,12 +14,27 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
 
 
   void initState() {
-    addListElement();
-    addListElement();
-    addListElement();
-    addListElement();
-    addListElement();
-    addListElement();
+    if (LocalMemory.listOfActive.length == 0) {
+      addListElement();
+      addListElement();
+      addListElement();
+      addListElement();
+      addListElement();
+      addListElement();
+    } else {
+      var r =Random();
+
+      Future.delayed(Duration(milliseconds: 2000+r.nextInt(3000)), () {
+
+        setState(() {
+          LocalMemory.listOfActive.removeAt(i-1);
+          LocalMemory.history.add(ListElement());
+          i--;
+          b++;
+        });
+      }
+      );
+    }
   }
 
 

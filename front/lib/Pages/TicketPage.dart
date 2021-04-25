@@ -1,7 +1,9 @@
 import 'package:amc_hack/Const.dart';
 import 'package:amc_hack/Pages/CameraPage.dart';
+import 'package:amc_hack/Pages/LocalMemory.dart';
 import 'package:amc_hack/Pages/MainPage/HistoryScreen.dart';
 import 'package:amc_hack/Pages/MainPage/HomeScreen.dart';
+import 'package:amc_hack/Widgets/ListElement.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -101,7 +103,8 @@ class _TicketPage extends State<TicketPage> with SingleTickerProviderStateMixin 
                               ]
                           ),
                           child: TextButton(
-                            onPressed: (){Navigator.pop(context);},
+                            onPressed: (){Navigator.pushReplacementNamed(context, "/MainPage");
+                            LocalMemory.listOfActive.add(ListElement());},
                             child: Text("Отправить", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFFCAB3E3)),),
                           ),
                         )
