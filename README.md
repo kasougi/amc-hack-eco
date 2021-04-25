@@ -6,6 +6,8 @@ Front/Mobile - Flutter
 
 Backend - FastApi
 
+![alt text](req.jpg "DB")
+
 Формула для кластеризации
 
 ![alt text](claster.jpg "DB")
