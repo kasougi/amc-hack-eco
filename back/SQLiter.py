@@ -53,6 +53,15 @@ class SQLighter:
         id_decode = [result[i][0] for i in range(len(result))]
         return max(id_decode)
 
+    def rating_up(self, user_id, num):
+        rating = self.getRatingByUsingId(user_id)
+        self.cursor.execute
+            f"UPDATE user SET rating = '{rating+num}' WHERE id = '{user_id}'")
+
+    def rating_down(self, user_id, num):
+        rating = self.getRatingByUsingId(user_id)
+        self.cursor.execute
+        f"UPDATE user SET rating = '{rating-num}' WHERE id = '{user_id}'")
 
     def between_lat_log(self, id_req, lat, log):
         half = 1 * 0.1988
@@ -70,7 +79,6 @@ class SQLighter:
                 f"UPDATE request SET radius_par = -1 WHERE id = '{id_req}'")
         self.connection.commit()
         return id_decode
-
 
     def get_range(self):
         par_id = 12

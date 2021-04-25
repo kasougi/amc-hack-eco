@@ -25,6 +25,7 @@ def user_request(request_form: RequestForm):
     db_worker.close()
     return request_id
 
+
 @app.get('/range')
 def get_range():
     db_worker = SQLighter("Maindatabase.db")
