@@ -31,6 +31,7 @@ dependencies:
   persistent_bottom_nav_bar: any
   flutter_statusbarcolor: ^0.2.3
   camera: ^0.5.8+2
+  flutter_svg: ^0.19.3
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +50,16 @@ flutter:
 
   assets:
     - assets/
+    - assets/icons/
+    - assets/fonts/
+
+  fonts:
+    - family: NonitoSans
+      fonts:
+        - asset: assets/fonts/NunitoSans-Regular.ttf
+          style: normal
+        - asset: assets/fonts/Nunito-Bold.ttf
+          weight: 700
 
   # To add assets to your application, add an assets section, like this:
   # assets:

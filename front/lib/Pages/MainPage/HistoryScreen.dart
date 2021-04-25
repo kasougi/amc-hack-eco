@@ -1,3 +1,5 @@
+import 'package:amc_hack/Pages/LocalMemory.dart';
+import 'package:amc_hack/Widgets/ListElement.dart';
 import 'package:flutter/material.dart';
 
 class HistoryScreen extends StatelessWidget{
@@ -26,7 +28,7 @@ class HistoryScreen extends StatelessWidget{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("История заявок,", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                    Text("История заявок,", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF7F98E7)),),
                     Text("Тут вся исторя заявок", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
                   ],
                 )
@@ -36,10 +38,11 @@ class HistoryScreen extends StatelessWidget{
               flex: 13,
               child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.only(top: 30),
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: Color(0xFFEDF4F7),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                       boxShadow: [
                         BoxShadow(
                             spreadRadius: -18,
@@ -48,6 +51,10 @@ class HistoryScreen extends StatelessWidget{
                         )
                       ]
                   ),
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  children:LocalMemory.history
+                ),
               ),
             ),
           ],

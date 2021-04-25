@@ -1,12 +1,60 @@
+import 'dart:math';
+
 import 'package:amc_hack/Widgets/ListElement.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget{
-  HomeScreen(){
+import '../LocalMemory.dart';
 
+class HomeScreen extends StatefulWidget {
+
+  State<StatefulWidget> createState() => _HomeScreen();
+}
+
+class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
+
+
+  void initState() {
+    addListElement();
+    addListElement();
+    addListElement();
+    addListElement();
+    addListElement();
+    addListElement();
+  }
+
+
+  int i = LocalMemory.listOfActive.length;
+  int b = LocalMemory.history.length;
+
+  void addListElement() {
+
+    var r =Random();
+
+    Future.delayed(Duration(milliseconds: 2000+r.nextInt(3000)), () {
+
+      setState(() {
+        LocalMemory.listOfActive.add(ListElement());
+        i++;
+      }
+      );
+
+      Future.delayed(Duration(milliseconds: 2000+r.nextInt(3000)), () {
+
+        setState(() {
+          LocalMemory.listOfActive.removeAt(i-1);
+          LocalMemory.history.add(ListElement());
+          i--;
+          b++;
+        });
+      }
+      );
+    }
+    );
   }
 
   Widget build(BuildContext context) {
+
+
     return Stack(
       children: [
         Align(
@@ -17,6 +65,7 @@ class HomeScreen extends StatelessWidget{
           ),
         ),
         ListView(
+          physics: BouncingScrollPhysics(),
           shrinkWrap: true,
           children: [
             Container(
@@ -25,7 +74,7 @@ class HomeScreen extends StatelessWidget{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Здравствуйте,", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                    Text("Здравствуйте,", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF7F98E7)),),
                     Text("Вот главная информация за неделю", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
                   ],
                 )
@@ -35,7 +84,7 @@ class HomeScreen extends StatelessWidget{
               margin: EdgeInsets.only(left: 10, right: 10, bottom: 30),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0x66EDF4F7),
+                color: Color(0xFFEDF4F7),
                 borderRadius: BorderRadius.circular(30),
                 boxShadow: [
                   BoxShadow(
@@ -50,7 +99,7 @@ class HomeScreen extends StatelessWidget{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Запросы", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    Text("Мои запросы", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                     SizedBox(
                       width: double.infinity,
                       child: Center(
@@ -60,8 +109,12 @@ class HomeScreen extends StatelessWidget{
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("289", style: TextStyle(fontSize: 90, fontWeight: FontWeight.bold),),
-                                Text("Цифорок было написано", style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),),
+                                Text((i+b).toString(), style: TextStyle(fontSize: 90, fontWeight: FontWeight.bold, foreground: Paint()..shader =  LinearGradient(
+                                  colors: <Color>[Color(0xff8f9ffd), Color(
+                                      0xffff9f77)],
+                                ).createShader(Rect.fromLTWH(0.0, 200, 200.0, 0))
+                                ),),
+                                Text("Всего                                        ", style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, ),),
                               ],
                             ),
 
@@ -74,13 +127,13 @@ class HomeScreen extends StatelessWidget{
                                 SizedBox(
                                   height: 18,
                                 ),
-                                Text("Описание цифорки", style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),),
-                                Text("78", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                                Text("История", style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal, fontFamily: "NonitoSans"),),
+                                Text((b).toString(), style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Color(0xFFC19FC1)),),
                                 SizedBox(
                                   height: 12,
                                 ),
-                                Text("Описание цифорки", style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),),
-                                Text("89", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                                Text("В очереди", style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal, fontFamily: "NonitoSans"),),
+                                Text("$i", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Color(0xFFC19FC1)),),
                               ],
                             )
                           ],
@@ -112,14 +165,7 @@ class HomeScreen extends StatelessWidget{
                     children: [
                       Text("Текущие заявки", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                       Column(
-                        children: [
-                          ListElement(),
-                          ListElement(),
-                          ListElement(),
-                          ListElement(),
-                          ListElement(),
-                          ListElement(),
-                        ],
+                        children: LocalMemory.listOfActive.length > 0? LocalMemory.listOfActive : [Text("Ничего нет")],
                       ),
                     ],
                   ),
