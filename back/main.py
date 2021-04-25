@@ -23,23 +23,23 @@ def user_request(request_form: RequestForm):
                            request_form.token_id, request_form.date, request_form.radius)
     id_decode = db_worker.between_lat_log(request_id, request_form.lat, request_form.log)
     db_worker.close()
-    return id_decode
+    return request_id
 
-@app.get('/check_locvvvv')
+@app.get('/range')
 def get_range():
     db_worker = SQLighter("Maindatabase.db")
     request_id = db_worker.get_range()
     return request_id
 
 @app.get('/check_loc')
-def get_requests(location1: str, location2: str):
+def get_check_loc(location1: str, location2: str):
     loc = Location(location1, location2)
     place = loc.locationObject()
     return place['plus_code']['compound_code']
 
 
-@app.get('/get_requests')
-def get_requests(user_id: int):
+@app.get('/request_by_user')
+def get_request_by_user(user_id: int):
     db_worker = SQLighter("Maindatabase.db")
     result = db_worker.get_requests(user_id)
     db_worker.close()
