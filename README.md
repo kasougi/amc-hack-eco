@@ -6,10 +6,10 @@ Front/Mobile - Flutter
 
 Backend - FastApi
 
-Bd - SQLite
-
-![alt text](db.png "DB")
-
 Формула для кластеризации
 
 ![alt text](claster.jpg "DB")
+
+Bd - SQLite
+
+![alt text](db.png "DB")
