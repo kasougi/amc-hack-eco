@@ -12,4 +12,4 @@ Bd - SQLite
 
 Формула для кластеризации
 
-![alt text](claster.png "DB")
+![alt text](claster.jpg "DB")
