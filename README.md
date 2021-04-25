@@ -8,7 +8,7 @@ Backend - FastApi
 
 Bd - SQLite
 
-![alt text](bd.png "DB")
+![alt text](db.png "DB")
 
 Формула для кластеризации
 
