@@ -21,10 +21,9 @@ def user_request(request_form: RequestForm):
     request_id = db_worker.send_request(request_form.user_id, request_form.tag_id, request_form.photo_url,
                            request_form.description, request_form.lat, request_form.log, request_form.moderation,
                            request_form.token_id, request_form.date, request_form.radius)
-    db_worker.between_lat_log(request_id, request_form.lat, request_form.log)
+    id_decode = db_worker.between_lat_log(request_id, request_form.lat, request_form.log)
     db_worker.close()
-    return {'2' : 'ZAEBIS'}
-
+    return id_decode
 
 @app.get('/check_loc')
 def get_requests(location1: str, location2: str):

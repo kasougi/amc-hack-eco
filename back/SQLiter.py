@@ -27,34 +27,73 @@ class SQLighter:
         return result
 
     # Вставка в БД нового пользователя
-    def send_user(self, name, last_name, email):
+    def send_user(self, name, last_name, email, user_rating = 5):
         self.cursor.execute(
-            f"INSERT INTO user (name, last_name, email) VALUES('{name}', '{last_name}', '{email}')")
+            f"INSERT INTO user (name, last_name, email, rating) VALUES('{name}', '{last_name}', '{email}, '{user_rating}')")
         self.connection.commit()
 
     # Вставка в БД новой заявки
-    def send_request(self, user_id, tag_id, photo_url, description, lat, log, moderation, token_id,  date, radius):
+    def send_request(self, user_id, tag_id, photo_url, description, lat, log, moderation, token_id,  date, radius, radius_par = 0):
+        rating = self.getRatingByUsingId(user_id)
         self.cursor.execute(
-            f"INSERT INTO request (user_id, photo_url,  description, lat, log, moderation, token_id, date, radius) VALUES('{user_id}', '{tag_id}'"
-            f"'{photo_url}', '{description}', '{lat}', '{log}', '{moderation}', '{token_id}', '{date}', '{radius}')")
+            f"INSERT INTO request (user_id, tag_id, photo_url,  description, lat, log, moderation, token_id, date, radius, rating_user, radius_par) VALUES('{user_id}', '{tag_id}',"
+            f"'{photo_url}', '{description}', '{lat}', '{log}', '{moderation}', '{token_id}', '{date}', '{radius}', '{rating}', '{radius_par}')")
+
         request_id = self.cursor.execute(
-            f"SELECT id FROM request WHERE user_id = 'user_id' AND photo_url = 'photo_url' AND description = 'description'"
-            f"AND lat = 'lat' AND log = 'log' AND moderation = 'moderation' AND token_id = 'token_id'"
-            f" AND date = 'date' AND radius = 'radius'").fetchall()
+            f"SELECT id FROM request WHERE user_id = '{user_id}' AND photo_url = '{photo_url}' AND description = '{description}'"
+            f"AND lat = '{lat}' AND log = '{log}' AND moderation = '{moderation}' AND token_id = '{token_id}'"
+            f" AND date = '{date}' AND radius = '{radius}' AND rating_user = '{rating}'").fetchall()
         self.connection.commit()
-        return request_id
+        id_decode = [request_id[i][0] for i in range(len(request_id))]
+        return max(id_decode)
+
+    def getRatingByUsingId(self, user_id):
+        result = self.cursor.execute(
+            f"SELECT rating FROM user WHERE id = '{user_id}' ").fetchall()
+        return result
 
 
-    def between_lat_log(self, id, lat, log):
-        half = 1 * 0,1988
+    def between_lat_log(self, id_req, lat, log):
+        half = 1 * 0.1988
+
         id = self.cursor.execute(
-            f"SELECT id FROM request WHERE lat BETWEEN  '{lat}' - '{half}' AND '{lat}' + '{half}'"
-            f"    AND log BETWEEN '{lat}' - '{half}' AND '{lat}' + '{half}')")
-        self.cursor.execute(
-            f"UPDATE request"
-            f"SET radius_par = {max(id)}"
-            f"WHERE '{id}' = 4")
+            f"SELECT id FROM request WHERE id < '{id_req}' AND lat BETWEEN  '{float(lat) - half}' AND '{float(lat) + half}'"
+            f"    AND log BETWEEN '{float(log) - half}' AND '{float(log) + float(half)}'").fetchall()
+        id_decode = [id[i][0] for i in range(len(id))]
+
+        if id_decode != []:
+            self.cursor.execute(
+                f"UPDATE request SET radius_par = '{max(id_decode)}' WHERE id = '{id_req}'")
+        else:
+            self.cursor.execute(
+                f"UPDATE request SET radius_par = -1 WHERE id = '{id_req}'")
         self.connection.commit()
+        return id_decode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     def send_category(self, category_name):
