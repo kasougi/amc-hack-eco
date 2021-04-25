@@ -1,3 +1,4 @@
+import 'package:amc_hack/Pages/CameraPage.dart';
 import 'package:flutter/material.dart';
 import 'Const.dart';
 import 'Pages/MainPage.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/MainPage",
       routes: {
         "/MainPage":(BuildContext context) => MainPage(),
+        "/CameraPage":(BuildContext context) => CameraPage(),
       },
     );
   }

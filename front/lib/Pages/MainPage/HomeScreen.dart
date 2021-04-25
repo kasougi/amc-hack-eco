@@ -1,3 +1,4 @@
+import 'package:amc_hack/Widgets/ListElement.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget{
@@ -15,7 +16,8 @@ class HomeScreen extends StatelessWidget{
             child: Image.asset("assets/background.png", fit: BoxFit.fitWidth,),
           ),
         ),
-        Column(
+        ListView(
+          shrinkWrap: true,
           children: [
             Container(
                 alignment: Alignment.topLeft,
@@ -33,18 +35,18 @@ class HomeScreen extends StatelessWidget{
               margin: EdgeInsets.only(left: 10, right: 10, bottom: 30),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0xFFEDF4F7),
-                borderRadius: BorderRadius.circular(40),
+                color: Color(0x66EDF4F7),
+                borderRadius: BorderRadius.circular(30),
                 boxShadow: [
                   BoxShadow(
                     spreadRadius: -18,
                     blurRadius: 28,
-                    color: Color(0x41000000)
+                    color: Color(0x329C9C9C)
                   )
                 ]
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -90,12 +92,11 @@ class HomeScreen extends StatelessWidget{
               )
             ),
             Container(
-                margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
+                margin: EdgeInsets.only(left: 10, right: 10, bottom: 45),
                 width: double.infinity,
-                height: 250,
                 decoration: BoxDecoration(
                     color: Color(0xFFEDF4F7),
-                    borderRadius: BorderRadius.circular(40),
+                    borderRadius: BorderRadius.circular(30),
                     boxShadow: [
                       BoxShadow(
                           spreadRadius: -18,
@@ -105,19 +106,21 @@ class HomeScreen extends StatelessWidget{
                     ]
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Текущие заявки", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Center(
-                          child: Column(
-                            children: [],
-                          )
-                        ),
-                      )
+                      Column(
+                        children: [
+                          ListElement(),
+                          ListElement(),
+                          ListElement(),
+                          ListElement(),
+                          ListElement(),
+                          ListElement(),
+                        ],
+                      ),
                     ],
                   ),
                 )

@@ -1,4 +1,5 @@
 import 'package:amc_hack/Const.dart';
+import 'package:amc_hack/Pages/CameraPage.dart';
 import 'package:amc_hack/Pages/MainPage/HistoryScreen.dart';
 import 'package:amc_hack/Pages/MainPage/HomeScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,7 +41,12 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
           ),
           PersistentBottomNavBarItem(
             icon: Icon(Icons.add, color: Colors.white,),
-            onPressed: (context) {},
+            onPressed: (context) {pushNewScreen(
+              context,
+              screen: CameraPage(),
+              withNavBar: false, // OPTIONAL VALUE. True by default.
+              pageTransitionAnimation: PageTransitionAnimation.cupertino,
+            );},
             title: (""),
             activeColorPrimary: Const.ThemeGreen,
             inactiveColorPrimary: CupertinoColors.systemGrey,
