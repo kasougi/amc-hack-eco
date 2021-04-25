@@ -27,7 +27,7 @@ class SQLighter:
         return result
 
     # Вставка в БД нового пользователя
-    def send_user(self, name, last_name, email, user_rating = 5):
+    def send_user(self, name, last_name, email, user_rating= 5):
         self.cursor.execute(
             f"INSERT INTO user (name, last_name, email, rating) VALUES('{name}', '{last_name}', '{email}, '{user_rating}')")
         self.connection.commit()
@@ -70,8 +70,30 @@ class SQLighter:
         self.connection.commit()
         return id_decode
 
+    def get_request_by_id(self, id):
+        result = self.cursor.execute(
+            f"SELECT * FROM request WHERE id = '{id}'").fetchall()
+        return result
+
+    def get_range(self):
+        par_id = 12;
+        result = self.cursor.execute(
+            f"SELECT * FROM request ORDER BY id ASC").fetchall()
+
+        res = [[]]
+        r = 0
+        for i in range(len(result)):
+            index = i
+            if(result[index][par_id] !=  0):
+                z = 1
+                while z-1 !=  0:
+                    z = result[index][par_id]
+                    res[r].append(1)
+                    index = z-1
+            r = r + 1
 
 
+        return res
 
 
 
