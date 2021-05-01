@@ -1,6 +1,6 @@
 import 'package:amc_hack/Pages/CameraPage.dart';
 import 'package:flutter/material.dart';
-import 'Const.dart';
+import 'Res/Const.dart';
 import 'Pages/MainPage.dart';
 import 'Pages/TicketPage.dart';
 

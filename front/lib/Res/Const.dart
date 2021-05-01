@@ -11,6 +11,14 @@ class Const {
 
   static final ThemeGreen = Color(0xFF8F9FFD);
 
+  static final colorTicketBackground = Color(0xFFEDF4F7);
+
+  static final textStyleTicketTitle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black);
+  static final textStyleTicketSubtitle = TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black);
+
+  static final textTitleSubtitleTitle = TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF7F98E7));
+  static final textTitleSubtitleSubtitle = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
+
   static void updateStatusBar(){
     FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
     FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
