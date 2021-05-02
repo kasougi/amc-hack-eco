@@ -19,6 +19,8 @@ class Const {
   static final textTitleSubtitleTitle = TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF7F98E7));
   static final textTitleSubtitleSubtitle = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
 
+  static final textSliderWidget = TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white);
+
   static void updateStatusBar(){
     FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
     FlutterStatusbarcolor.setStatusBarWhiteForeground(true);

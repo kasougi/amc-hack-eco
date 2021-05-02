@@ -46,12 +46,11 @@ class _CameraPage extends State<CameraPage> with SingleTickerProviderStateMixin 
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
             height: 100,
             width: double.infinity,
             decoration: BoxDecoration(
                 color: Color(0xFFFFFFFF),
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                 boxShadow: [
                   BoxShadow(
                       spreadRadius: -18,
@@ -61,11 +60,13 @@ class _CameraPage extends State<CameraPage> with SingleTickerProviderStateMixin 
                 ]
             ),
             child: TextButton(
-              onPressed: (){Navigator.pushReplacementNamed(context, "/TicketPage");},
+              onPressed: (){setState(() {
+                Navigator.pushReplacementNamed(context, "/TicketPage");
+              });},
               child: Text("Сделать фото", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),),
             ),
           )
-        )
+        ),
       ],
     );
   }
