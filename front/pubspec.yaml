@@ -33,6 +33,10 @@ dependencies:
   camera: ^0.5.8+2
   flutter_svg: ^0.19.3
 
+  firebase_core: ^1.0.1
+  firebase_auth: ^1.0.1
+  google_sign_in: ^5.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

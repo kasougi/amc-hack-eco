@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "839939697645",
+    "project_id": "ecologyproject-f4673",
+    "storage_bucket": "ecologyproject-f4673.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839939697645:android:917f55f35d62c4684315e4",
+        "android_client_info": {
+          "package_name": "com.example.amc_hack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839939697645-gutjrj9uv2unl4mbgl8arjugorcqalq5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.amc_hack",
+            "certificate_hash": "00a4686c8e793c85c55fe1a22c0e59d5f63bc728"
+          }
+        },
+        {
+          "client_id": "839939697645-883huda75f92boi0r3vt2mrm6q8bj3q7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq65YeArjt0g_FLMv0uyRvmMS7ntmliY4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839939697645-883huda75f92boi0r3vt2mrm6q8bj3q7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

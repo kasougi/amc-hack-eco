@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         controller: _controller,
         navBarHeight: 80,
         decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(22.0),
+          borderRadius: BorderRadius.circular(15.0),
 
           colorBehindNavBar: Colors.white,
         ),

@@ -11,19 +11,8 @@ class StyledTextField extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 130,
       width: double.infinity,
-      decoration: BoxDecoration(
-          color: Color(0xFFEDF4F7),
-          borderRadius: BorderRadius.circular(30),
-          boxShadow: [
-            BoxShadow(
-                spreadRadius: -18,
-                blurRadius: 28,
-                color: Color(0x329C9C9C)
-            )
-          ]
-      ),
       child: Padding(
         padding: EdgeInsets.all(16),
         child: TextField(
@@ -31,6 +20,9 @@ class StyledTextField extends StatelessWidget{
           minLines: 18,
           maxLines: 18,
           controller: textController,
+          decoration: InputDecoration(
+              hintText: "Комментарий"
+          ),
 
         ),
       ),

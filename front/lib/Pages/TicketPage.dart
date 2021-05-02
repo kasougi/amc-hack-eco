@@ -6,6 +6,7 @@ import 'package:amc_hack/Pages/MainPage/HomeScreen.dart';
 import 'package:amc_hack/Widgets/BackgroundImage.dart';
 import 'package:amc_hack/Widgets/ListElement.dart';
 import 'package:amc_hack/Widgets/TicketPage/SliderWidget.dart';
+import 'package:amc_hack/Widgets/TicketPage/StyledDropDown.dart';
 import 'package:amc_hack/Widgets/TicketPage/StyledTextField.dart';
 import 'package:amc_hack/Widgets/TitleSubtitle.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,6 +34,8 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
   }
 
   Widget build(BuildContext context) {
+
+    String dropdownValue = 'Нефтяное загрязнение';
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -62,14 +65,13 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
                     flex: 7,
                     child: Container(
                         alignment: Alignment.topLeft,
-                        padding: EdgeInsets.only(top: 60, left: 10),
+                        padding: EdgeInsets.only(top: 40, left: 10, right: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Опишите что случилось", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFFFFFFFF)),),
                             Container(
-                              margin: EdgeInsets.only(left: 10, right: 10, bottom: 30),
-                              height: 100,
+                              margin: EdgeInsets.only(bottom: 30),
                               width: double.infinity,
                               decoration: BoxDecoration(
                                   color: Color(0xFFEDF4F7),
@@ -82,7 +84,13 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
                                     )
                                   ]
                               ),
-                              child: StyledTextField(textController: textCon,),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  StyledTextField(textController: textCon,),
+                                  StyledDropDown(value: dropdownValue)
+                                ],
+                              )
                             ),
                             Text("Размер (метры)", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFFFFFFFF)),),
 
@@ -97,11 +105,11 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
-                  height: 100,
+                  height: 80,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: Color(0xFFFFFFFF),
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(30),
                       boxShadow: [
                         BoxShadow(
                             spreadRadius: -18,
@@ -113,7 +121,7 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
                   child: TextButton(
                     onPressed: (){Navigator.pop(context);
                     LocalMemory.listOfActive.add(ListElement());},
-                    child: Text("Отправить", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFFCAB3E3)),),
+                    child: Text("Отправить", style: Const.textTitleSubtitleTitle,),
                   ),
                 )
               )
