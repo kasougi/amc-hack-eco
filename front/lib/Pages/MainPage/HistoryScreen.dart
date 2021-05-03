@@ -1,4 +1,4 @@
-import 'package:amc_hack/Pages/LocalMemory.dart';
+import 'file:///C:/Users/gennadyalheev/IdeaProjects/AMC_Hack_Eco_Work/front/lib/Res/LocalMemory.dart';
 import 'package:amc_hack/Widgets/BackgroundImage.dart';
 import 'package:amc_hack/Widgets/ListElement.dart';
 import 'package:amc_hack/Widgets/TitleSubtitle.dart';

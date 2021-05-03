@@ -45,86 +45,88 @@ class _TaskBarState extends State<TaskBar> with SingleTickerProviderStateMixin {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Мои запросы", style: Const.textStyleTicketTitle,),
+          Text("Ваши запросы", style: Const.textStyleTicketTitle,),
           SizedBox(
             width: double.infinity,
             child: Center(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                  Expanded(
+                    flex: 5,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
 
-                      Text(
-                        (total).toString(),
-                        style: TextStyle(
-                            fontSize: 90,
-                            fontWeight: FontWeight.bold,
-                            foreground: Paint()..shader =  LinearGradient(
-                              colors: <Color>[
-                                Color(0xff8f9ffd),
-                                Color(0xffff9f77)],
-                            ).createShader(
-                                Rect.fromLTWH(0.0, 200, 200.0, 0)
-                            )
+                        Text(
+                          (total).toString(),
+                          style: TextStyle(
+                              fontSize: 90,
+                              fontWeight: FontWeight.bold,
+                              foreground: Paint()..shader =  LinearGradient(
+                                colors: <Color>[
+                                  Color(0xff8f9ffd),
+                                  Color(0xffff9f77)],
+                              ).createShader(
+                                  Rect.fromLTWH(0.0, 200, 200.0, 0)
+                              )
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Всего                                        ",
-                        style: Const.textStyleTicketSubtitle),
-                    ],
+                        Text(
+                            "Всего",
+                            style: Const.textStyleTicketSubtitle),
+                      ],
+                    ),
                   ),
 
-                  SizedBox(
-                    width: 30,
-                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 18,
+                        ),
+                        Text(
+                          "История",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight:
+                              FontWeight.normal,
+                              fontFamily: "NonitoSans"
+                          ),
+                        ),
+                        Text(
+                          (sent).toString(),
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFC19FC1)
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 18,
-                      ),
-                      Text(
-                        "История",
-                        style: TextStyle(
-                            fontSize: 10,
-                            fontWeight:
-                            FontWeight.normal,
-                            fontFamily: "NonitoSans"
+                        Text(
+                          "В очереди",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: "NonitoSans"
+                          ),
                         ),
-                      ),
-                      Text(
-                        (sent).toString(),
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFC19FC1)
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12,
-                      ),
 
-                      Text(
-                        "В очереди",
-                        style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.normal,
-                            fontFamily: "NonitoSans"
+                        Text(
+                          (wait).toString(),
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFC19FC1)
+                          ),
                         ),
-                      ),
-
-                      Text(
-                        (wait).toString(),
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFC19FC1)
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),

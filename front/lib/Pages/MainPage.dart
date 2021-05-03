@@ -2,6 +2,7 @@ import 'file:///C:/Users/gennadyalheev/IdeaProjects/AMC_Hack_Eco_Work/front/lib/
 import 'package:amc_hack/Pages/CameraPage.dart';
 import 'package:amc_hack/Pages/MainPage/HistoryScreen.dart';
 import 'package:amc_hack/Pages/MainPage/HomeScreen.dart';
+import 'package:amc_hack/Widgets/NavigationBar.dart';
 import 'package:amc_hack/Widgets/SvgIcon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,60 +13,31 @@ class MainPage extends StatefulWidget {
   State<StatefulWidget> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin {
-  int g = 0;
+class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
+
+  List screens = [
+    HomeScreen(),
+    HistoryScreen()
+  ];
+
+  int currentIndex = 0;
 
   Widget build(BuildContext context) {
 
-    PersistentTabController _controller;
-    _controller = PersistentTabController(initialIndex: 0);
+    Const.updateStatusBarDark();
 
-    return PersistentTabView(
-        context,
-        controller: _controller,
-        navBarHeight: 80,
-        decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(15.0),
-
-          colorBehindNavBar: Colors.white,
-        ),
-        screenTransitionAnimation:  ScreenTransitionAnimation( // Screen transition animation on change of selected tab.
-          animateTabTransition: true,
-          curve: Curves.ease,
-          duration: Duration(milliseconds: 200),
-        ),
-        screens: [
-          HomeScreen(),
-          null,
-          HistoryScreen(),
-        ],
+    return Scaffold(
+      extendBody: true,
+      body: screens.elementAt(currentIndex),
+      bottomNavigationBar: NavigationBar(
         items: [
-          PersistentBottomNavBarItem(
-            icon: SvgIcon("assets/icons/home-line 1.svg"),
-            activeColorPrimary: Const.ThemeGreen,
-            inactiveColorPrimary: CupertinoColors.systemGrey,
-          ),
-          PersistentBottomNavBarItem(
-            icon: Icon(Icons.add, color: Colors.white,),
-            onPressed: (context) {pushNewScreen(
-              context,
-              screen: CameraPage(),
-              withNavBar: false, // OPTIONAL VALUE. True by default.
-              pageTransitionAnimation: PageTransitionAnimation.cupertino,
-            );},
-            title: (""),
-            activeColorPrimary: Const.ThemeGreen,
-            inactiveColorPrimary: CupertinoColors.systemGrey,
-
-          ),
-          PersistentBottomNavBarItem(
-            icon: SvgIcon("assets/icons/bookmark-line 1.svg"),
-            activeColorPrimary: Const.ThemeGreen,
-            inactiveColorPrimary: CupertinoColors.systemGrey,
-          ),
-
+          "assets/icons/bookmark-line 1.svg",
+          "assets/icons/home-line 1.svg",
         ],
-      navBarStyle: NavBarStyle.style17,
+        currentIndex: currentIndex,
+        onTap: (int i) => setState(() => currentIndex = i),
+        onPressed: () {Navigator.pushNamed(context, "/CameraPage");},
+      )
     );
   }
 }

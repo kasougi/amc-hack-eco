@@ -1,6 +1,6 @@
 import 'file:///C:/Users/gennadyalheev/IdeaProjects/AMC_Hack_Eco_Work/front/lib/Res/Const.dart';
 import 'package:amc_hack/Pages/CameraPage.dart';
-import 'package:amc_hack/Pages/LocalMemory.dart';
+import 'file:///C:/Users/gennadyalheev/IdeaProjects/AMC_Hack_Eco_Work/front/lib/Res/LocalMemory.dart';
 import 'package:amc_hack/Pages/MainPage/HistoryScreen.dart';
 import 'package:amc_hack/Pages/MainPage/HomeScreen.dart';
 import 'package:amc_hack/Widgets/BackgroundImage.dart';
