@@ -39,7 +39,10 @@ class _AuthenticationPage extends State<AuthenticationPage> with SingleTickerPro
               children: [
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: GoogleAuth()
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 40),
+                    child: GoogleAuth(),
+                  )
                 )
               ],
             ),

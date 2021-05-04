@@ -60,9 +60,9 @@ class _CameraPage extends State<CameraPage> with SingleTickerProviderStateMixin 
                 ]
             ),
             child: TextButton(
-              onPressed: (){setState(() {
-                Navigator.pushReplacementNamed(context, "/TicketPage");
-              });},
+              onPressed: (){
+                Navigator.pop(context, true);
+              },
               child: Text("Сделать фото", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),),
             ),
           )

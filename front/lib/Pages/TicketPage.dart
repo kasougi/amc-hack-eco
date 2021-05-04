@@ -3,6 +3,7 @@ import 'package:amc_hack/Pages/CameraPage.dart';
 import 'file:///C:/Users/gennadyalheev/IdeaProjects/AMC_Hack_Eco_Work/front/lib/Res/LocalMemory.dart';
 import 'package:amc_hack/Pages/MainPage/HistoryScreen.dart';
 import 'package:amc_hack/Pages/MainPage/HomeScreen.dart';
+import 'package:amc_hack/Res/Ticket.dart';
 import 'package:amc_hack/Widgets/BackgroundImage.dart';
 import 'package:amc_hack/Widgets/ListElement.dart';
 import 'package:amc_hack/Widgets/TicketPage/SliderWidget.dart';
@@ -24,6 +25,8 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
   TextEditingController textCon = TextEditingController();
   FocusScopeNode inputFocusNode = FocusScopeNode();
 
+  StyledDropDownData dropdownValue = StyledDropDownData("Нефтяное загрязнение");
+
   @override
 
 
@@ -34,8 +37,6 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
   }
 
   Widget build(BuildContext context) {
-
-    String dropdownValue = 'Нефтяное загрязнение';
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -88,7 +89,7 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   StyledTextField(textController: textCon,),
-                                  StyledDropDown(value: dropdownValue)
+                                  StyledDropDown(data: dropdownValue)
                                 ],
                               )
                             ),
@@ -119,8 +120,7 @@ class _TicketPage extends State<TicketPage> with WidgetsBindingObserver  {
                       ]
                   ),
                   child: TextButton(
-                    onPressed: (){Navigator.pop(context);
-                    LocalMemory.listOfActive.add(ListElement());},
+                    onPressed: (){Navigator.pop(context, Ticket(title: dropdownValue.value, subtitle: textCon.text));},
                     child: Text("Отправить", style: Const.textTitleSubtitleTitle,),
                   ),
                 )

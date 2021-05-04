@@ -1,36 +1,27 @@
-import 'package:amc_hack/Res/Authentication.dart';
 import 'package:amc_hack/Res/Const.dart';
 import 'package:amc_hack/Widgets/BackgroundImage.dart';
+import 'package:amc_hack/Widgets/ElementList.dart';
 import 'package:amc_hack/Widgets/ElevatedCard.dart';
-import 'package:amc_hack/Widgets/ListElement.dart';
 import 'package:amc_hack/Widgets/TaskBar.dart';
 import 'package:amc_hack/Widgets/TitleSubtitle.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../Res/LocalMemory.dart';
 
 class HomeScreen extends StatefulWidget {
+
+  ElementListController elementListController;
+  TaskBarController taskBarController;
+
+  HomeScreen({@required this.elementListController, @required this.taskBarController});
 
   State<StatefulWidget> createState() => _HomeScreen();
 }
 
 class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
 
-  int i = LocalMemory.listOfActive.length;
-  int b = LocalMemory.history.length;
-  TaskBarController taskBarController = new TaskBarController();
-
   void initState() {
-    Future.delayed(Duration(milliseconds: 2000), () {
-      if (this.mounted) {
-        taskBarController.countSent = 2;
-        taskBarController.countWait = 4;
-        print(taskBarController.wait);
-      }
-    });
-
+    super.initState();
   }
 
   String a = LocalMemory.gUser.displayName;
@@ -66,7 +57,7 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
             ),
             Padding(
               padding: EdgeInsets.only(top: 45),
-              child: TaskBar(taskBarController: taskBarController),
+              child: TaskBar(taskBarController: widget.taskBarController),
             ),
             Padding(
               padding: EdgeInsets.only(top: 30),
@@ -82,9 +73,7 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Текущие заявки", style: Const.textStyleTicketTitle,),
-                    ListElement(title: "Пожар в сковородке", subtitle: "Вроде горит",),
-                    ListElement(title: "Разлив нефтепродуктов", subtitle: "В ванной",),
-                    ListElement(title: "Мусор в мусорке", subtitle: "В урне ли?",),
+                    ElementList(elementListController: widget.elementListController)
                   ],
                 ),
               ),

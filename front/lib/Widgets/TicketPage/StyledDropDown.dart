@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class StyledDropDown extends StatefulWidget{
 
-  String value;
+  StyledDropDownData data;
 
-  StyledDropDown({@required this.value});
+  StyledDropDown({@required this.data});
 
   @override
   _StyledDropDownState createState() => _StyledDropDownState();
@@ -20,7 +20,7 @@ class _StyledDropDownState extends State<StyledDropDown> {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: DropdownButton<String>(
-          value: widget.value,
+          value: widget.data.value,
           icon: const Icon(Icons.arrow_downward),
           iconSize: 24,
           elevation: 16,
@@ -31,7 +31,7 @@ class _StyledDropDownState extends State<StyledDropDown> {
           ),
           onChanged: (String newValue) {
             setState(() {
-              widget.value = newValue;
+              widget.data.value = newValue;
             });
           },
           items: <String>['Нефтяное загрязнение', 'Пожар', 'Мусор']
@@ -45,4 +45,11 @@ class _StyledDropDownState extends State<StyledDropDown> {
       ),
     );
   }
+}
+
+class StyledDropDownData {
+  String value;
+
+  StyledDropDownData(this.value);
+
 }

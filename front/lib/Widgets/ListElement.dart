@@ -1,15 +1,14 @@
 import 'package:amc_hack/Res/Const.dart';
+import 'package:amc_hack/Res/Ticket.dart';
 import 'package:amc_hack/Widgets/ElevatedCard.dart';
 import 'package:flutter/material.dart';
 
 class ListElement extends StatelessWidget {
 
-  String title;
-  String subtitle;
+  Ticket ticket;
 
   ListElement({
-    this.title,
-    this.subtitle
+    this.ticket
   });
 
 
@@ -34,10 +33,10 @@ class ListElement extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                this.title,
+                ticket.title,
                 style: Const.textStyleTicketTitle),
               Text(
-                this.subtitle,
+                ticket.subtitle,
                 style: Const.textStyleTicketSubtitle),
             ],
           ),
