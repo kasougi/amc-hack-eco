@@ -2,6 +2,6 @@
 
 A new Flutter project.
 
-## Getting Started
+## UML Scheme
 
 ![alt text](plantuml.png "UML")
