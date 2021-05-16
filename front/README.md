@@ -1,6 +1,6 @@
 # amc_hack
 
-A new Flutter project.
+A Flutter project.
 
 ## UML Scheme
 
